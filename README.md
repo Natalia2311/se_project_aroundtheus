@@ -28,6 +28,8 @@ The way you'll do this at work is by exporting images directly from Figma — we
   
 Good luck and have fun!
 
- 
+
+ Link to Git hub pages:https://natalia2311.github.io/se_project_aroundtheus/
+
 
 
