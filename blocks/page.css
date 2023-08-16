@@ -29,11 +29,6 @@
   .page__content {
     padding: 0;
   }
-
-  .content {
-    padding-left: 19px;
-    padding-right: 19px;
-  }
 }
 
 @media screen and (max-width: 800px) and (min-width: 541px) {
