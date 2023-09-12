@@ -34,13 +34,10 @@ const profileCloseModal = document.querySelector("#edit-modal-close-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
-const profileDescriptionInput = document.querySelector(
-  "#profile-description-input"
-);
+const profileDescriptionInput = document.querySelector("#profile-description-input");
 const profileEditForm = profileEditModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 
 // Functions
 
