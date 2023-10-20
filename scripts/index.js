@@ -124,6 +124,8 @@ profileEditButton.addEventListener("click", () => {
 
 profileCloseModal.addEventListener("click", () => closePopup(profileEditModal));
 
+previewCloseModal.addEventListener("click", () => closePopup(previewCardModal));
+
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
@@ -144,6 +146,4 @@ likeButtons.forEach((likeButton) => {
   });
 });
 
-previewCloseModal.addEventListener("click", () => {
-  previewCardModal.classList.remove("modal__opened");
-});
+
