@@ -38,20 +38,22 @@
 
 .modal__container-preview {
   background-color: transparent;
-  position: relative;
-  margin: auto;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  max-height: 75vh;
+  max-width: 75vw;  
+  padding: 0;
   
 }
 
 .modal__preview-image {
   position: relative;
-  margin: auto;
+  
 }
 
 .modal__close-preview {
-  position: absolute;
-  top: -50px;
-  left: calc(100% + 5px);
+ 
 }
 
 
