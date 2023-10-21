@@ -45,8 +45,7 @@
           ></button>
         </section>
         <section class="cards page__section">
-          <ul class="cards__list">
-          </ul>
+          <ul class="cards__list"></ul>
         </section>
       </main>
       <footer class="footer">
@@ -54,7 +53,6 @@
       </footer>
     </div>
 
-    
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="edit-modal-close-button"></button>
@@ -65,7 +63,8 @@
             name="title"
             id="profile-title-input"
             class="modal__form-input"
-            placeholder="Name" required
+            placeholder="Name"
+            required
           />
 
           <input
@@ -73,14 +72,14 @@
             name="description"
             class="modal__form-input"
             id="profile-description-input"
-            placeholder="Description" required
+            placeholder="Description"
+            required
           />
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
     </div>
 
-    
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
@@ -89,47 +88,47 @@
           <input
             type="text"
             name="title"
-         
             class="modal__form-input modal__input_type_title"
-           
-            placeholder="Title" required
+            placeholder="Title"
+            required
           />
 
           <input
             type="text"
             name="url "
             class="modal__form-input modal__input_type_url"
-         
-            placeholder="Image URL" required
+            placeholder="Image URL"
+            required
           />
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
     </div>
 
-
     <div class="modal" id="preview-card-modal">
-      <div class="modal__container modal__container-preview" id="modal__container-preview">
-      <button class="modal__close modal__close-preview"
-      id ="modal-image-close-button" aria-label="closebutton" type="button"></button>
-        <img class="modal__preview-image" src="#" alt="#"/>
+      <div
+        class="modal__container modal__container-preview"
+        id="modal__container-preview"
+      >
+        <button
+          class="modal__close modal__close-preview"
+          id="modal-image-close-button"
+          aria-label="closebutton"
+          type="button"
+        ></button>
+        <img class="modal__preview-image" src="#" alt="#" />
         <p class="modal__preview-heading"></p>
       </div>
     </div>
 
-
     <template id="card-template">
       <li class="card">
         <button
-            aria-label="delete"
-            type="button"
-            class="card__delete-button"
-          ></button>
-        <img
-          src=""
-          alt=""
-          class="card__image"
-        />
+          aria-label="delete"
+          type="button"
+          class="card__delete-button"
+        ></button>
+        <img src="" alt="" class="card__image" />
         <div class="card__description">
           <h2 class="card__title"></h2>
           <button
@@ -143,4 +142,3 @@
     <script src="./scripts/index.js" defer></script>
   </body>
 </html>
- 
