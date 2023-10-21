@@ -4,7 +4,6 @@
   list-style: none;
   border-radius: 10px;
   position: relative;
-  
 }
 .card__image {
   width: 282px;
@@ -64,11 +63,9 @@
   position: absolute;
   top: 18px;
   right: 15px;
-
-  
 }
 .card__delete-button_active {
-  background-image: url("../images/Trash_active.svg"); 
+  background-image: url("../images/Trash_active.svg");
 }
 .card__delete-button:hover {
   opacity: 0.6;
