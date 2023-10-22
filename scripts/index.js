@@ -48,8 +48,8 @@ const addCardFormElement = addCardModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
-const cardTitleInput = addCardFormElement.querySelector(".modal__input_type_title");
-const cardUrlInput = addCardFormElement.querySelector(".modal__input_type_url");
+const cardTitleInput = addCardFormElement.querySelector(".modal__form-input_type_title");
+const cardUrlInput = addCardFormElement.querySelector(".modal__form-input_type_url");
 
 
 
@@ -78,21 +78,24 @@ function getCardElement(cardData) {
   const deleteButton = cardElement.querySelector(".card__delete-button");
 
   likeButton.addEventListener("click", () => {
-  likeButton.classList.toggle("card__like-button_active");});
+    likeButton.classList.toggle("card__like-button_active");
+  });
 
   deleteButton.addEventListener("click", () => {
-  cardElement.remove();});
+    cardElement.remove();
+  });
   cardImageEl.setAttribute("src", cardData.link);
-  cardImageEl.setAttribute("p", cardData.name);
+  cardImageEl.setAttribute("alt", cardData.name);
   cardTitleEl.textContent = cardData.name;
 
+
   cardElement.addEventListener("click", () => {
-  previewCardModal.classList.add('.modal_opened'); 
-  previewImageEl.src = cardData.link; 
-  previewImageEl.alt = cardData.name; 
-  previewHeadingEl.textContent = cardData.name; 
-  openPopup(previewCardModal);}); 
-  return cardElement;  
+    previewImageEl.src = cardData.link;
+    previewImageEl.alt = cardData.name;
+    previewHeadingEl.textContent = cardData.name;
+    openPopup(previewCardModal);
+  });
+  return cardElement;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -112,6 +115,7 @@ function handleAddCardFormSubmit(e) {
   const link = cardUrlInput.value;
   renderCard({ name, link }, cardListEl);
   closePopup(addCardModal);
+  addCardModal.reset();
 }
 
 /* -------------------------------------------------------------------------- */
@@ -144,4 +148,3 @@ likeButtons.forEach((likeButton) => {
     likeButton.classList.toggle("card__like-button_active");
   });
 });
-
