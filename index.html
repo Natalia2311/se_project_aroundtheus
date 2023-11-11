@@ -52,39 +52,46 @@
         <p class="footer__copyright">&copy; 2023 Around the U.S</p>
       </footer>
     </div>
+<!----Edit card modal-->
 
     <div class="modal" id="profile-edit-modal">
       <div class="modal__container">
         <button class="modal__close" id="edit-modal-close-button"></button>
         <h2 class="modal__heading">Edit Profile</h2>
-        <form class="modal__form">
+        <form class="modal__form" novalidate>
+          <label class="modal__label">
           <input
             type="text"
             name="title"
             id="profile-title-input"
-            class="modal__form-input"
-            placeholder="Name"
+            class="modal__form-input modal__form-input_type_error"
+            placeholder="Name" minlength="2" maxlength="40"
             required
           />
-
+          <span class="modal__error modal__error_visible" id="profile-title-input-error"></span>
+        </label>
+        <label class="modal__label">
           <input
             type="text"
             name="description"
-            class="modal__form-input"
+            class="modal__form-input modal__form-input_type_error"
             id="profile-description-input"
-            placeholder="Description"
+            placeholder="Description" minlength="2" maxlength="200"
             required
           />
-          <button type="submit" class="modal__button">Save</button>
+          <span class="modal__error modal__error_visible" id="profile-description-input-error"></span>
+        </label>
+          <button disabled type="submit" class="modal__button modal__button_disabled" >Save</button>
         </form>
       </div>
     </div>
+<!--Add card modal-->
 
     <div class="modal" id="add-card-modal">
       <div class="modal__container">
         <button class="modal__close"></button>
         <h2 class="modal__heading">New Place</h2>
-        <form class="modal__form" id="add-card-form">
+        <form class="modal__form" id="add-card-form" novalidate>
           <input
             type="text"
             name="title"
@@ -139,7 +146,7 @@
         </div>
       </li>
     </template>
-    <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
+    <script src="./scripts/index.js" defer></script> 
   </body>
 </html>
-
