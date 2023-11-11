@@ -88,4 +88,3 @@ const config = {
 };
 
 enableValidation(config);
-
