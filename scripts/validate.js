@@ -70,7 +70,7 @@ function setEventListeners(formEl, options) {
 // Adding Handlers to all forms
 
 function enableValidation(options) {
-    const formEls = [...document.querySelectorAll(options, formSelector)];
+    const formEls = [...document.querySelectorAll(options.formSelector)];
     formEls.forEach((formEl) => {
             formEl.addEventListener("submit", (e) => {
                 e.preventDefault();
@@ -79,10 +79,6 @@ function enableValidation(options) {
     });
 }
 
-
-function enableValidation(options) {
-    console.log(options);
-}
 
 
 const config = {
@@ -95,3 +91,4 @@ const config = {
 };
 
 enableValidation(config);
+
