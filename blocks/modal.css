@@ -132,15 +132,16 @@
   padding: 0;
 }
 
+
+.modal__button:hover {
+  opacity: 0.8;
+}
+
 .modal__button_disabled {
   border: 1px solid #000;
   opacity: 0.2;
   background: #F6F6F6;
   color: #000;
-}
-
-.modal__button:hover {
-  opacity: 0.8;
 }
 
 .modal__error_visible {
@@ -151,7 +152,13 @@ font-style: normal;
 font-weight: 400;
 line-height: normal;
 position: absolute;
+top: 40px;
 }
+
+.modal__error_visibl:last-of-type {
+  
+}
+
 
 .modal__label {
   position: relative;
@@ -210,4 +217,3 @@ border-bottom: 1px solid red;
     padding-right: 19px;
   }
 }
-
