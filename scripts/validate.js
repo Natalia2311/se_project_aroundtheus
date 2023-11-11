@@ -1,30 +1,35 @@
-
-
 function showInputError(formEl, inputEl, {inputErrorClass, errorClass} ) {
-    const errorMessageEl = formEl.querySelector('#${inputEl.id}-error'); 
+    const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`); 
     inputEl.classList.add(inputErrorClass); 
     errorMessageEl.textContent = inputEl.validationMessage;
     errorMessageEl.classList.add(errorClass);
   }
    
   function hideInputError(formEl, inputEl, {inputErrorClass, errorClass} ) {
-      const errorMessageEl = formEl.querySelector('#${inputEl.id}-error'); 
+      const errorMessageEl = formEl.querySelector(`#${inputEl.id}-error`); 
       inputEl.classList.remove(inputErrorClass); 
       errorMessageEl.textContent = "";
       errorMessageEl.classList.remove(errorClass);
     }
 
-  function checkInputValidity(formEl, inputEl) {
+  function checkInputValidity(formEl, inputEl, options) {
     if(!inputEl.validity.valid) {
-     showInputError(formEl, inputEl, inputEl.validationMessage);
+     showInputError(formEl, inputEl, options);
     } else
-        hideInputError(formEl, inputEl);   
+    hideInputError(formEl, inputEl, options);   
 }
 
 function hasInvalidInput(inputList) {
     return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
+
+function enableButton(inputEls, submitButton, inactiveButtonClass) {
+    if (!hasInvalidInput([...inputEls])) {
+        submitButton.classList.remove(inactiveButtonClass);
+        submitButton.disabled = false;
+    }
+        }
 function disableButton(inputEls, submitButton, inactiveButtonClass) {
     if (hasInvalidInput(inputEls)) {
         submitButton.classList.add(inactiveButtonClass);
@@ -34,13 +39,7 @@ function disableButton(inputEls, submitButton, inactiveButtonClass) {
     
     }
 
-function enableButton(inputEls, submitButton, inactiveButtonClass) {
-if (!hasInvalidInput([...inputEls])) {
-    submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disabled = false;
-}
-    }
-    
+  
 function toggleButtonState (inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
     disableButton(inputEls, submitButton, inactiveButtonClass);
@@ -88,3 +87,4 @@ const config = {
 };
 
 enableValidation(config);
+
