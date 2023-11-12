@@ -92,21 +92,28 @@
         <button class="modal__close"></button>
         <h2 class="modal__heading">New Place</h2>
         <form class="modal__form" id="add-card-form" novalidate>
+          <label class="modal__label">
           <input
             type="text"
             name="title"
-            class="modal__form-input modal__form-input_type_title"
-            placeholder="Title"
-            required
+            id="profile-name-input"
+            class="modal__form-input modal__form-input_type_error"
+            placeholder="Title" minlength="1" maxlength="30"
+            required 
           />
-
+          <span class="modal__error modal__error_visible" id="profile-name-input-error"></span>
+        </label>
+        <label class="modal__label">
           <input
             type="url"
             name="url"
-            class="modal__form-input modal__form-input_type_url"
+            id="profile-url-input"
+            class="modal__form-input modal__form-input_type_error"
             placeholder="Image URL"
             required
           />
+          <span class="modal__error modal__error_visible" id="profile-url-input-error"></span>
+        </label>
           <button type="submit" class="modal__button">Save</button>
         </form>
       </div>
