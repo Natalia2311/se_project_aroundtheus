@@ -36,10 +36,8 @@ function disableButton(inputEls, submitButton, inactiveButtonClass) {
         submitButton.disabled = true;  
         return; 
     }
-    
     }
 
-  
 function toggleButtonState (inputEls, submitButton, { inactiveButtonClass }) {
   if (hasInvalidInput(inputEls)) {
     disableButton(inputEls, submitButton, inactiveButtonClass);
@@ -62,6 +60,24 @@ function setEventListeners(formEl, options) {
     })
 }
        
+function keyHandler(evt) {
+    if (evt.key === "Escape") {
+      const modal = document.querySelector('.modal_opened');
+      closePopup(modal);
+    }
+  }
+  
+  function closePopup(modal) {
+    modal.classList.remove("modal_opened");
+    document.removeEventListener('keydown', keyHandler);
+  }
+  
+  function openPopup(modal) {
+    modal.classList.add("modal_opened");
+    document.addEventListener('keydown', keyHandler);
+  }
+  
+ 
 
 // Adding Handlers to all forms
 
@@ -87,4 +103,9 @@ const config = {
 };
 
 enableValidation(config);
+
+
+
+
+
 
