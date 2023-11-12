@@ -70,6 +70,35 @@ function openPopup(modal) {
   modal.classList.add("modal_opened");
 }
 
+function keyHandler(evt) {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector('.modal_opened');
+    closePopup(modal);
+  }
+}
+
+function closePopup(modal) {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener('keydown', keyHandler);
+}
+
+function openPopup(modal) {
+  modal.classList.add("modal_opened");
+  document.addEventListener('keydown', keyHandler);
+}
+
+
+[profileEditModal, addCardModal, previewCardModal].forEach((modalElement) => {
+      modalElement.addEventListener("click", (evt) => {
+        if (
+          evt.target.classList.contains("modal") ||
+          evt.target.classList.contains("modal__close-button")
+        ) {
+          closePopup(modalElement);
+        }
+      });
+    });
+
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector(".card__image");
