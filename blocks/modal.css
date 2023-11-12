@@ -135,6 +135,7 @@
 
 .modal__button:hover {
   opacity: 0.8;
+  cursor: default;
 }
 
 .modal__button_disabled {
@@ -153,11 +154,9 @@ font-weight: 400;
 line-height: normal;
 position: absolute;
 top: 40px;
+width: 350px;
 }
 
-.modal__error_visibl:last-of-type {
-  
-}
 
 
 .modal__label {
@@ -195,6 +194,10 @@ border-bottom: 1px solid red;
 }
 .modal__form-input:last-of-type {
   margin-bottom: 45px;
+}
+
+.modal__error_visible {
+  width: 100%;
 }
 
 .modal__form {
