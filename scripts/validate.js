@@ -78,7 +78,20 @@ function keyHandler(evt) {
   }
   
  
+  
 
+  [profileEditModal, addCardModal, previewImageEl].forEach((modalElement) => {
+        modalElement.addEventListener("click", (evt) => {
+          if (
+            evt.target.classList.contains("modal") ||
+            evt.target.classList.contains("modal__close-button")
+          ) {
+            closeModal(modalElement);
+          }
+        });
+      });
+  
+  
 // Adding Handlers to all forms
 
 function enableValidation(options) {
@@ -103,7 +116,6 @@ const config = {
 };
 
 enableValidation(config);
-
 
 
 
