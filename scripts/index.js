@@ -48,8 +48,8 @@ const addCardFormElement = addCardModal.querySelector(".modal__form");
 const cardListEl = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
 const addNewCardButton = document.querySelector(".profile__add-button");
-const cardTitleInput = addCardFormElement.querySelector(".modal__form-input_type_title");
-const cardUrlInput = addCardFormElement.querySelector(".modal__form-input_type_url");
+const cardTitleInput = addCardFormElement.querySelector("#profile-name-input");
+const cardUrlInput = addCardFormElement.querySelector("#profile-url-input");
 
 
 
