@@ -1,3 +1,9 @@
+import FormValidator from "../components/FormValidator.js";
+
+import Card from "../components/Card.js";
+
+
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,6 +30,14 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
+
+
+
+
+ const cardSelector = "#card-template";
+ 
+
+ 
 
 /* -------------------------------------------------------------------------- */
 /*                                  Elements                                  */
@@ -53,15 +67,34 @@ const cardUrlInput = addCardFormElement.querySelector("#profile-url-input");
 
 
 
+const validationSettings = {
+  inputSelector: ".modal__form-input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__form-input_type_error",
+  errorClass: "modal__error_visible",  
+};
+
+
+const profileEditElement = profileEditModal.querySelector('.modal__form');
+const addFormElement = addCardModal.querySelector('.modal__form');
+
+const editFormValidator = new FormValidator(validationSettings, profileEditElement);
+const addFormValidator = new FormValidator(validationSettings, addFormElement);
+//addFormValidator.resetValidation();
+
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
+
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 
 
 
-function renderCard(cardData) {
-  const cardElement = getCardElement(cardData);
-  cardListEl.prepend(cardElement);
+function renderCard(cardData, cardListEl) {
+  const card = new Card(cardData, cardSelector);
+  cardListEl.prepend(card.getView());
 }
 
 
@@ -84,6 +117,7 @@ function openPopup(modal) {
 }
 
 
+
 [profileEditModal, addCardModal, previewCardModal].forEach((modalElement) => {
       modalElement.addEventListener("click", (evt) => {
         if (
@@ -95,33 +129,33 @@ function openPopup(modal) {
       });
     });
 
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
+// function getCardElement(cardData) {
+//   const cardElement = cardTemplate.cloneNode(true);
+//   const cardImageEl = cardElement.querySelector(".card__image");
+//   const cardTitleEl = cardElement.querySelector(".card__title");
+//   const likeButton = cardElement.querySelector(".card__like-button");
+//   const deleteButton = cardElement.querySelector(".card__delete-button");
 
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
+//   likeButton.addEventListener("click", () => {
+//     likeButton.classList.toggle("card__like-button_active");
+//   });
 
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-  cardImageEl.setAttribute("src", cardData.link);
-  cardImageEl.setAttribute("alt", cardData.name);
-  cardTitleEl.textContent = cardData.name;
+//   deleteButton.addEventListener("click", () => {
+//     cardElement.remove();
+//   });
+//   cardImageEl.setAttribute("src", cardData.link);
+//   cardImageEl.setAttribute("alt", cardData.name);
+//   cardTitleEl.textContent = cardData.name;
 
 
-  cardImageEl.addEventListener("click", () => {
-    previewImageEl.src = cardData.link;
-    previewImageEl.alt = cardData.name;
-    previewHeadingEl.textContent = cardData.name;
-    openPopup(previewCardModal);
-  });
-  return cardElement;
-}
+//   cardImageEl.addEventListener("click", () => {
+//     previewImageEl.src = cardData.link;
+//     previewImageEl.alt = cardData.name;
+//     previewHeadingEl.textContent = cardData.name;
+//     openPopup(previewCardModal);
+//   });
+//   return cardElement;
+// }
 
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
