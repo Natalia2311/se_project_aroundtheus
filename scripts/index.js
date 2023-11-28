@@ -193,5 +193,5 @@ addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
 
 addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
 
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
+//initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
 
