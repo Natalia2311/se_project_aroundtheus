@@ -44,10 +44,10 @@ _getElement() {
 
 getView() {
   this._cardElement = this._getElement;
-  this._cardImageEl = this._cardElement.querySelector(".card__image");
-  this._cardTitleEl = this._cardElement.querySelector(".card__title");
-  this._likeButton = this._cardElement.querySelector(".card__like-button");
-  this._deleteButton = this._cardElement.querySelector(".card__delete-button");
+  const cardImageEl = this._cardElement.querySelector(".card__image");
+  const cardTitleEl = this._cardElement.querySelector(".card__title");
+  const likeButton = this._cardElement.querySelector(".card__like-button");
+  const deleteButton = this._cardElement.querySelector(".card__delete-button");
   previewImageEl.src = this._link;
   previewImageEl.alt = this._name;
   previewHeadingEl.textContent = this._name;
