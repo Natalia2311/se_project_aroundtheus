@@ -49,7 +49,7 @@ getView() {
   this._deleteButton = this._cardElement.querySelector(".card__delete-button");
   this._cardImageEl.src = this._link;
   this._cardImageEl.alt = this._name;
-  this._cardTitleE.textContent = this._name;
+  this._cardTitleEl.textContent = this._name;
 
     this._setEventListeners();
    
