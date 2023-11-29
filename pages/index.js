@@ -34,7 +34,7 @@ const initialCards = [
 
 
 
- const cardSelector = "#card-template";
+       
  
 
  
@@ -129,26 +129,26 @@ function openPopup(modal) {
       });
     });
 
-// function getCardElement(cardData) {
+//  function getCardElement(cardData) {
 //   const cardElement = cardTemplate.cloneNode(true);
 //   const cardImageEl = cardElement.querySelector(".card__image");
 //   const cardTitleEl = cardElement.querySelector(".card__title");
-//   const likeButton = cardElement.querySelector(".card__like-button");
-//   const deleteButton = cardElement.querySelector(".card__delete-button");
+// //   const likeButton = cardElement.querySelector(".card__like-button");
+// //   const deleteButton = cardElement.querySelector(".card__delete-button");
 
-//   likeButton.addEventListener("click", () => {
-//     likeButton.classList.toggle("card__like-button_active");
-//   });
+// //   likeButton.addEventListener("click", () => {
+// //     likeButton.classList.toggle("card__like-button_active");
+// //   });
 
-//   deleteButton.addEventListener("click", () => {
-//     cardElement.remove();
-//   });
+// //   deleteButton.addEventListener("click", () => {
+// //     cardElement.remove();
+// //   });
 //   cardImageEl.setAttribute("src", cardData.link);
 //   cardImageEl.setAttribute("alt", cardData.name);
 //   cardTitleEl.textContent = cardData.name;
 
 
-//   cardImageEl.addEventListener("click", () => {
+//    cardImageEl.addEventListener("click", () => {
 //     previewImageEl.src = cardData.link;
 //     previewImageEl.alt = cardData.name;
 //     previewHeadingEl.textContent = cardData.name;
@@ -181,7 +181,7 @@ function handleAddCardFormSubmit(e) {
 /*                               Event Listeners                              */
 /* -------------------------------------------------------------------------- */
 
-profileEditButton.addEventListener("click", () => {
+  profileEditButton.addEventListener("click", () => {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(profileEditModal);
