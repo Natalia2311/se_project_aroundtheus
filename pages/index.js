@@ -90,10 +90,17 @@ addFormValidator.enableValidation();
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 
+function handleImageClick({ name, link }) {
+  previewImageEl.src = link;
+  previewImageEl.alt = name;
+  previewHeadingEl.textContent = name;
+  openPopup(previewCardModal);
+}
+
 
 
 function renderCard(cardData, cardListEl) {
-  const card = new Card(cardData, '#card-template');
+  const card = new Card(cardData, '#card-template', handleImageClick);
   cardListEl.prepend(card.getView());
 }
 
@@ -129,6 +136,9 @@ function openPopup(modal) {
       });
     });
 
+
+  
+
 //  function getCardElement(cardData) {
 //   const cardElement = cardTemplate.cloneNode(true);
 //   const cardImageEl = cardElement.querySelector(".card__image");
@@ -148,14 +158,7 @@ function openPopup(modal) {
 //   cardTitleEl.textContent = cardData.name;
 
 
-//    cardImageEl.addEventListener("click", () => {
-//     previewImageEl.src = cardData.link;
-//     previewImageEl.alt = cardData.name;
-//     previewHeadingEl.textContent = cardData.name;
-//     openPopup(previewCardModal);
-//   });
-//   return cardElement;
-// }
+ 
 
 /* -------------------------------------------------------------------------- */
 /*                               Event Handlers                               */
