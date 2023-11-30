@@ -1,200 +1,95 @@
-import FormValidator from "../components/FormValidator.js";
+class FormValidator {
+    constructor(settings, formEl) {
+    this._inputSelector = settings.inputSelector;
+    this._submitButtonSelector = settings.submitButtonSelector;
+    this._inactiveButtonClass = settings.inactiveButtonClass;
+    this._inputErrorClass = settings.inputErrorClass;
+    this._errorClass = settings.errorClass;
+    this._form = formEl;
+    this._submitButton = document.querySelector(this._submitButtonSelector);
+    }
 
-import Card from "../components/Card.js";
-
-
-
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
-
-
-
-
-      const cardSelector= '#card-template';
- 
-
- 
-
-/* -------------------------------------------------------------------------- */
-/*                                  Elements                                  */
-/* -------------------------------------------------------------------------- */
-
-const addCardModal = document.querySelector("#add-card-modal");
-const profileEditButton = document.querySelector("#profile__edit-button");
-const profileEditModal = document.querySelector("#profile-edit-modal");
-const profileCloseModal = document.querySelector("#edit-modal-close-button");
-const addCardCloseModal = addCardModal.querySelector(".modal__close");
-const profileTitle = document.querySelector(".profile__title");
-const previewCardModal = document.querySelector("#preview-card-modal");
-const previewModalContainer = previewCardModal.querySelector("#modal__container-preview");
-const previewImageEl = previewModalContainer.querySelector(".modal__preview-image");
-const previewHeadingEl = previewModalContainer.querySelector(".modal__preview-heading");
-const previewCloseModal = document.querySelector("#modal-image-close-button");
-const profileDescription = document.querySelector(".profile__description");
-const profileTitleInput = document.querySelector("#profile-title-input");
-const profileDescriptionInput = document.querySelector("#profile-description-input");
-const profileEditForm = profileEditModal.querySelector(".modal__form");
-const addCardFormElement = addCardModal.querySelector(".modal__form");
-const cardListEl = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#card-template").content.firstElementChild;
-const addNewCardButton = document.querySelector(".profile__add-button");
-const cardTitleInput = addCardFormElement.querySelector("#profile-name-input");
-const cardUrlInput = addCardFormElement.querySelector("#profile-url-input");
-
-
-
-const validationSettings = {
-  inputSelector: ".modal__form-input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__form-input_type_error",
-  errorClass: "modal__error_visible",  
-};
-
-
-const profileEditElement = profileEditModal.querySelector('.modal__form');
-const addFormElement = addCardModal.querySelector('.modal__form');
-
-const editFormValidator = new FormValidator(validationSettings, profileEditElement);
-const addFormValidator = new FormValidator(validationSettings, addFormElement);
-//addFormValidator.resetValidation();
-
-editFormValidator.enableValidation();
-addFormValidator.enableValidation();
-
-/* -------------------------------------------------------------------------- */
-/*                                  Functions                                 */
-/* -------------------------------------------------------------------------- */
-
-function handleImageClick({ name, link }) {
-  previewImageEl.src = link;
-  previewImageEl.alt = name;
-  previewHeadingEl.textContent = name;
-  openPopup(previewCardModal);
-}
-
-
-
-function renderCard(cardData, cardListEl) {
-  const card = new Card(cardData, '#card-template', handleImageClick);
-  cardListEl.prepend(card.getView());
-}
-
-
-
-function handleEscape(evt) {
-  if (evt.key === "Escape") {
-    const modal = document.querySelector('.modal_opened');
-    closePopup(modal);
-  }
-}
-
-function closePopup(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener('keydown', handleEscape);
-}
-
-function openPopup(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener('keydown', handleEscape);
-}
-
-
-
-[profileEditModal, addCardModal, previewCardModal].forEach((modalElement) => {
-      modalElement.addEventListener("click", (evt) => {
-        if (
-          evt.target.classList.contains("modal") ||
-          evt.target.classList.contains("modal__close")
-        ) {
-          closePopup(modalElement);
+    
+   _showInputError(inputEl) {
+        const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`); 
+        inputEl.classList.add(this._inputErrorClass); 
+        errorMessageEl.textContent = inputEl.validationMessage;
+        errorMessageEl.classList.add(this._errorClass);
+      } 
+       
+    _hideInputError(inputEl) {
+          const errorMessageEl = this._form.querySelector(`#${inputEl.id}-error`); 
+          inputEl.classList.remove(this._inputErrorClass); 
+          errorMessageEl.textContent = "";
+          errorMessageEl.classList.remove(this._errorClass);
         }
-      });
+
+       _hasInvalidInput(inputList) {
+       return !inputList.every((inputEl) => inputEl.validity.valid);
+      }
+    
+     _enableButton() {
+        this._submitButton.classList.remove(this._inactiveButtonClass);
+        this._submitButton.disabled = false;  
+      }
+
+
+    _disableButton() {
+        this._submitButton.classList.add(this._inactiveButtonClass);
+        this._submitButton.disabled = true;  
+        return; 
+     }        
+
+    _toggleButtonState (inputEls, submitButton) {
+        if (this._hasInvalidInput(inputEls)) {
+          this._disableButton(inputEls, this._submitButton, this._inactiveButtonClass);
+        } else {
+          this._enableButton(inputEls, this._submitButton, this._inactiveButtonClass);
+        }   
+      }
+
+    
+
+    _checkInputValidity(formEl, inputEl) {
+        if(!inputEl.validity.valid) {
+        this._showInputError(formEl, inputEl);
+        } else
+        this._hideInputError(formEl, inputEl);   
+    }
+    
+
+    _setEventListeners() {
+    this._inputEls = [...this._form.querySelectorAll(this._inputSelector)];
+    this._toggleButtonState(this._inputEls, this._submitButton);
+    this._inputEls.forEach((inputEl) => {
+        inputEl.addEventListener("input", (e) => {
+         
+           this._checkInputValidity(this._form, inputEl);
+           this._toggleButtonState(inputEls, this._submitButton);
+        });
     });
+    }
 
+    enableValidation() {
+        this._form.addEventListener("submit", (e) => {
+            e.preventDefault();
+        });
+    this._setEventListeners();
 
-  
-
-//  function getCardElement(cardData) {
-//   const cardElement = cardTemplate.cloneNode(true);
-//   const cardImageEl = cardElement.querySelector(".card__image");
-//   const cardTitleEl = cardElement.querySelector(".card__title");
-// //   const likeButton = cardElement.querySelector(".card__like-button");
-// //   const deleteButton = cardElement.querySelector(".card__delete-button");
-
-// //   likeButton.addEventListener("click", () => {
-// //     likeButton.classList.toggle("card__like-button_active");
-// //   });
-
-// //   deleteButton.addEventListener("click", () => {
-// //     cardElement.remove();
-// //   });
-//   cardImageEl.setAttribute("src", cardData.link);
-//   cardImageEl.setAttribute("alt", cardData.name);
-//   cardTitleEl.textContent = cardData.name;
-
-
- 
-
-/* -------------------------------------------------------------------------- */
-/*                               Event Handlers                               */
-/* -------------------------------------------------------------------------- */
-
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
-  profileTitle.textContent = profileTitleInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
-  closePopup(profileEditModal);
+    } 
 }
 
-function handleAddCardFormSubmit(e) {
-  e.preventDefault();
-  const name = cardTitleInput.value;
-  const link = cardUrlInput.value;
-  renderCard({ name, link }, cardListEl);
-  closePopup(addCardModal);
-  addCardFormElement.reset();
+
+const settings = {
+    formSelector: ".modal__form",
+    inputSelector: ".modal__form-input",
+    submitButtonSelector: ".modal__button",
+    inactiveButtonClass: "modal__button_disabled",
+    inputErrorClass: "modal__form-input_type_error",
+    errorClass: "modal__error_visible",      
 }
 
-/* -------------------------------------------------------------------------- */
-/*                               Event Listeners                              */
-/* -------------------------------------------------------------------------- */
 
-  profileEditButton.addEventListener("click", () => {
-  profileTitleInput.value = profileTitle.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-  openPopup(profileEditModal);
-});
 
-profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-addCardFormElement.addEventListener("submit", handleAddCardFormSubmit);
-
-addNewCardButton.addEventListener("click", () => openPopup(addCardModal));
-
-initialCards.forEach((cardData) => renderCard(cardData, cardListEl));
-
+export default FormValidator;
