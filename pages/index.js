@@ -34,7 +34,7 @@ const initialCards = [
 
 
 
-       
+      const cardSelector= '#card-template';
  
 
  
@@ -93,7 +93,7 @@ addFormValidator.enableValidation();
 
 
 function renderCard(cardData, cardListEl) {
-  const card = new Card(cardData, cardSelector);
+  const card = new Card(cardData, '#card-template');
   cardListEl.prepend(card.getView());
 }
 
