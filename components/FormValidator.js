@@ -52,9 +52,9 @@ class FormValidator {
 
     _checkInputValidity(formEl, inputEl) {
         if(!inputEl.validity.valid) {
-        this._showInputError(formEl, inputEl);
+        this._showInputError(inputEl);
         } else
-        this._hideInputError(formEl, inputEl);   
+        this._hideInputError(inputEl);   
     }
     
 
@@ -65,7 +65,7 @@ class FormValidator {
         inputEl.addEventListener("input", (e) => {
          
            this._checkInputValidity(this._form, inputEl);
-           this._toggleButtonState(inputEls, this._submitButton);
+           this._toggleButtonState(this._inputEls, this._submitButton);
         });
     });
     }
