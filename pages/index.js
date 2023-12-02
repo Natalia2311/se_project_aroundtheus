@@ -85,7 +85,7 @@ addFormValidator.enableValidation();
 /*                                  Functions                                 */
 /* -------------------------------------------------------------------------- */
 
-function handleImageClick({ name, link }) {
+function handleImageClick(link, name) {
   previewImageEl.src = link;
   previewImageEl.alt = name;
   previewHeadingEl.textContent = name;
