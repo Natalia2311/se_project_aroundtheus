@@ -6,7 +6,7 @@ class FormValidator {
   this._inputErrorClass = settings.inputErrorClass;
   this._errorClass = settings.errorClass;
   this._form = formEl;
-  this._submitButton = document.querySelector(this._submitButtonSelector);
+  this._submitButton = this.form.querySelector(this._submitButtonSelector);
   }
 
   
