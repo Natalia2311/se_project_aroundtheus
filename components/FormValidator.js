@@ -50,9 +50,9 @@ class FormValidator {
 
   toggleButtonState() {
     if (this._hasInvalidInput(this._inputEls)) {
-      this._disableButton(this._submitButton, this._inactiveButtonClass);
+      this._disableButton();
     } else {
-      this._enableButton(this._submitButton, this._inactiveButtonClass);
+      this._enableButton();
     }
   }
 
@@ -68,16 +68,16 @@ class FormValidator {
     });
     this._setEventListeners();
   }
+
+
 }
+
 
 const settings = {
   formSelector: ".modal__form",
-  inputSelector: ".modal__form-input",
   submitButtonSelector: ".modal__button",
   inactiveButtonClass: "modal__button_disabled",
   inputErrorClass: "modal__form-input_type_error",
-  errorClass: "modal__error_visible",
 };
 
 export default FormValidator;
-
