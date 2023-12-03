@@ -76,10 +76,11 @@ const addFormElement = addCardModal.querySelector('.modal__form');
 
 const editFormValidator = new FormValidator(validationSettings, profileEditElement);
 const addFormValidator = new FormValidator(validationSettings, addFormElement);
-//addFormValidator.resetValidation();
+
 
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
 
 /* -------------------------------------------------------------------------- */
 /*                                  Functions                                 */
@@ -97,6 +98,7 @@ function handleImageClick(link, name) {
 function renderCard(cardData, cardListEl) {
   const card = new Card(cardData, '#card-template', handleImageClick);
   cardListEl.prepend(card.getView());
+  
 }
 
 
@@ -105,6 +107,7 @@ function handleEscape(evt) {
   if (evt.key === "Escape") {
     const modal = document.querySelector('.modal_opened');
     closePopup(modal);
+
   }
 }
 
@@ -116,6 +119,7 @@ function closePopup(modal) {
 function openPopup(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener('keydown', handleEscape);
+  
 }
 
 
@@ -127,6 +131,7 @@ function openPopup(modal) {
           evt.target.classList.contains("modal__close")
         ) {
           closePopup(modalElement);
+        
         }
       });
     });
@@ -164,6 +169,7 @@ function handleProfileEditSubmit(e) {
   profileTitle.textContent = profileTitleInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closePopup(profileEditModal);
+ 
 }
 
 function handleAddCardFormSubmit(e) {
@@ -173,6 +179,7 @@ function handleAddCardFormSubmit(e) {
   renderCard({ name, link }, cardListEl);
   closePopup(addCardModal);
   addCardFormElement.reset();
+  //addFormValidator.toggleButtonState(); 
 }
 
 /* -------------------------------------------------------------------------- */
@@ -183,6 +190,7 @@ function handleAddCardFormSubmit(e) {
   profileTitleInput.value = profileTitle.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
   openPopup(profileEditModal);
+  
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
