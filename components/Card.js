@@ -7,9 +7,7 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .addEventListener("click", () => {
+      this._likeButton.addEventListener("click", () => {
         this._handleLikeIcon();
       });
 
@@ -18,9 +16,8 @@ class Card {
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
-    this._cardElement
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
+    
+      this._cardImageEl.addEventListener("click", () => {
         this._handleImageClick(this._link, this._name);
       });
   }
@@ -31,9 +28,8 @@ class Card {
   }
 
   _handleLikeIcon() {
-    this._cardElement
-      .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+    
+    this._likeButton.classList.toggle("card__like-button_active");
   }
 
   _getElement() {
