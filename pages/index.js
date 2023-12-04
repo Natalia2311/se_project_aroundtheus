@@ -97,9 +97,13 @@ function handleImageClick(link, name) {
   openPopup(previewCardModal);
 }
 
+function createCard(item) {
+return cardElement.getView();
+}
+
 function renderCard(cardData, cardListEl) {
-  const card = new Card(cardData, "#card-template", handleImageClick);
-  cardListEl.prepend(card.getView());
+  const card = createCard(cardData);
+  cardListEl.prepend(card);
 }
 
 function handleEscape(evt) {
