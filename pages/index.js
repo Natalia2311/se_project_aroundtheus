@@ -97,7 +97,8 @@ function handleImageClick(link, name) {
   openPopup(previewCardModal);
 }
 
-function createCard(item) {
+function createCard(cardData) {
+const cardElement = new Card(cardData, '#card-template', handleImageClick);
 return cardElement.getView();
 }
 
