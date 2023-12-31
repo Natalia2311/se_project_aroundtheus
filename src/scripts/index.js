@@ -120,10 +120,10 @@ editFormValidator.resetValidation();
 const userInfo = profileUserInfo.getUserInfo();
 profileTitleInput.value = userInfo.title;
 profileDescriptionInput.value = userInfo.description;
-profileEditModal.open();
+editFormPopup.open();
 });
 
 addNewCardButton.addEventListener("click", () => {
-addCardModal.open();
+addCardPopup.open();
 addFormValidator.resetValidation();
 });
