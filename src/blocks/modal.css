@@ -143,6 +143,7 @@
   opacity: 0.2;
   background: #F6F6F6;
   color: #000;
+  cursor: default;
 }
 
 .modal__error_visible {
