@@ -5,7 +5,6 @@ import FormValidator from "../components/FormValidator.js";
 import "../pages/index.css";
 import UserInfo from "../components/UserInfo.js";
 import {
-  initialCards,
   validationSettings,
   addCardModal,
   profileEditModal,
@@ -23,16 +22,31 @@ import {
   previewModalContainer,
   profileTitle,
   profileDescription,
+  initialCards,
 } from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import Api from "../components/api.js";
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "260f3e4b-e160-43cd-8335-e153b3805f81",
+    "Content-Type": "application/json",
+  },
+}); 
+ 
+
 
 // Create instances of the classes
-
+let cardSection;
+api.
+getInitialCards()
+.then((res) => {
 const cardSection = new Section(
   {
-    items: initialCards,
+    items: res,
     renderer: (cardData) => {
       const card = createCard(cardData);
       cardSection.addItem(card);
@@ -40,7 +54,27 @@ const cardSection = new Section(
   },
   ".cards__list"
 );
-cardSection.renderItems();
+  cardSection.renderItems();
+})
+.catch((err) => {
+  console.error(err);
+});
+
+
+
+api
+.getUserInfo()
+.then((inputValues) => {
+  profileUserInfo.setUserInfo(inputValues.title, inputValues.description);
+})
+.catch((err) => {
+  console.log(err);
+});
+
+
+
+
+
 
 const addCardPopup = new PopupWithForm(
   "#add-card-modal",
@@ -88,9 +122,28 @@ function createCard(cardData) {
 }
 
 function handleProfileEditSubmit(inputValues) {
-  profileUserInfo.setUserInfo(inputValues.title, inputValues.description);
+api
+.updateUserInfo(inputValues.title, inputValues.description).then((res) => {
+  profileUserInfo.setUserInfo(res);
+});
   editFormPopup.close();
 }
+
+function handleAvatarFormSubmit(inputValues) {
+  api.updateAvatar(inputValues.avatar)
+  .then((inputValues) => {
+    profileUserInfo.setUserAvatar(inputValues);
+    updateAvatarForm.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}
+
+
+
+
+
 
 function handleAddCardFormSubmit(inputValues) {
   const cardData = createCard({
