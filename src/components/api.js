@@ -28,6 +28,16 @@ getNewCard() {
     .then((res) => this._checkResponce(res));    
 }
 
+getUserInfo() {
+  return fetch(`${this._baseUrl}/users/me`, {
+    method: "GET",
+    headers: this._headers,
+    })
+    .then((res) => this._checkResponce(res));    
+}
+  
+
+
 }
 
 // const api = new Api({
