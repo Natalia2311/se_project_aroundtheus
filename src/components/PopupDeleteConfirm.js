@@ -13,13 +13,20 @@ setSubmitAction(action) {
 }
 
 setEventListeners() {
-    this._popupForm.addEvenListener("submit", (evt) => {
+    this._submitButton.addEvenListener("click", (evt) => {
         evt.preventDefault();
-        this.setSubmitAction(); 
-        this._handleFormSubmit();  
+        this._handleFormSubmit();
+        this.close();  
     });
     super.setEventListeners();
 }
+
+// deletecCard() {
+// this._deleteButton.addEvenListener("submit",
+//     this._cardElement.remove(),
+//     this._cardElement = null
+// );
+// }
 
 }
 
