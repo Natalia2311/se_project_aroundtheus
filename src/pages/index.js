@@ -132,7 +132,6 @@ function handleDeleteButton(id) {
     deleteCard(id)
     .then(() => {
       
-      deletecCard();
     })
     console.log(id)
     .catch((err) => {
