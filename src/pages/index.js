@@ -122,15 +122,18 @@ function createCard(cardData) {
 }
 
 const cardDeleteModal = new PopupDeleteConfirm("#delete-modal");
-//ardDeleteModal.setEventListeners();
+cardDeleteModal.setEventListeners();
 
-function handleDeleteButton(id) {
+function handleDeleteButton(card) {
   cardDeleteModal.open();
   cardDeleteModal.setEventListeners();
   cardDeleteModal.setSubmitAction(() => {
     api.
-    deleteCard(id)
+    deleteCard(card._id)
     .then(() => {
+      
+      cardDeleteModal.close();
+      card.handleDeleteCard();
       
     })
     console.log(id)
