@@ -21,12 +21,5 @@ setEventListeners() {
     super.setEventListeners();
 }
 
-deletecCard() {
-this._deleteButton.addEvenListener("submit",
-    this._cardElement.remove(),
-    this._cardElement = null
-);
-}
-
 }
 
