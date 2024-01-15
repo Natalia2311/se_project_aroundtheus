@@ -14,28 +14,13 @@ class PopupWithForm extends Popup {
     super.close();
   }
 
-
-
   setLoading(isLoading) {
     if (isLoading) {
-        this._submitButton.textContent = "Saving ...";
+      this._submitButton.textContent = "Saving ...";
     } else {
-        this._submitButton.textContent = this._submitButtonText;
-    }       
-}
-
-//   handleSubmit {
-//   this.setLoading(true);
-//   this._handleFormSubmit(inputValues)
-//   .then(() => {
-//    this.close();
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   })
-//   .finally(() => this.setLoading(false));
-// }
-
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
 
   _getInputValues() {
     const inputValues = {};

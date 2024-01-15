@@ -183,7 +183,7 @@ function handleProfileEditSubmit({ title, description }) {
     })
     .finally(() => {
       editFormPopup.setLoading(false);
-    })
+    });
   editFormPopup.close();
 }
 
@@ -200,7 +200,7 @@ function handleAvatarFormSubmit(inputValues) {
     })
     .finally(() => {
       avatarPopup.setLoading(false);
-    })
+    });
 }
 
 const openAvatarButton = document.querySelector(".profile__icon");
@@ -210,7 +210,7 @@ openAvatarButton.addEventListener("click", () => {
 });
 
 function handleAddCardFormSubmit(inputValues) {
- addCardPopup.setLoading(true, "Saving ...");
+  addCardPopup.setLoading(true, "Saving ...");
   api
     .getNewCard(inputValues)
     .then((cardData) => {
@@ -223,7 +223,7 @@ function handleAddCardFormSubmit(inputValues) {
     })
     .finally(() => {
       addCardPopup.setLoading(false);
-    })
+    });
 }
 
 profileEditButton.addEventListener("click", () => {

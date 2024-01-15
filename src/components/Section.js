@@ -6,9 +6,8 @@ class Section {
   }
 
   renderItems() {
-    this._items.forEach(this._renderer)
-    };
-  
+    this._items.forEach(this._renderer);
+  }
 
   addItem(card) {
     this._containerSelector.prepend(card);
