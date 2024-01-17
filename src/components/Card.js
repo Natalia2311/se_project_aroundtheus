@@ -34,8 +34,7 @@ class Card {
       this._handleCardLike(this);
     });
 
-    this._cardElement
-      .querySelector(".card__delete-button")
+    this._deleteButton
       .addEventListener("click", () => {
         this._handleDeleteButton(this);
       });

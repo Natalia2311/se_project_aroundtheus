@@ -110,6 +110,14 @@ addFormValidator.enableValidation();
 const avatarPopup = new PopupWithForm("#avatar-modal", handleAvatarFormSubmit);
 avatarPopup.setEventListeners();
 
+const avatarEditElement = document.forms["avatar-form"];
+const avatarFormValidator = new FormValidator(
+  validationSettings,
+
+  avatarEditElement
+);
+avatarFormValidator.enableValidation();
+
 const editFormPopup = new PopupWithForm(
   "#profile-edit-modal",
   handleProfileEditSubmit
@@ -135,9 +143,6 @@ popupWithImage.setEventListeners();
 // All the rest
 
 function handleImageClick(link, name) {
-  previewImageEl.src = link;
-  previewImageEl.alt = name;
-  previewHeadingEl.textContent = name;
   popupWithImage.open(link, name);
 }
 
@@ -176,7 +181,7 @@ function handleProfileEditSubmit({ title, description }) {
     .updateUserInfo({ title, description })
     .then((res) => {
       profileUserInfo.setUserInfo(res);
-      this.close();
+      editFormPopup.close();
     })
     .catch((err) => {
       console.log(err);
@@ -184,7 +189,6 @@ function handleProfileEditSubmit({ title, description }) {
     .finally(() => {
       editFormPopup.setLoading(false);
     });
-  editFormPopup.close();
 }
 
 function handleAvatarFormSubmit(inputValues) {
@@ -195,9 +199,7 @@ function handleAvatarFormSubmit(inputValues) {
       profileUserInfo.setUserAvatar(inputValues.url);
       avatarPopup.close();
     })
-    .catch((err) => {
-      console.log(err);
-    })
+    .catch(console.error)
     .finally(() => {
       avatarPopup.setLoading(false);
     });
