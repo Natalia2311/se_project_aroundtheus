@@ -6,30 +6,16 @@ import "../pages/index.css";
 import UserInfo from "../components/UserInfo.js";
 import {
   validationSettings,
-  addCardModal,
-  profileEditModal,
-  cardListEl,
   profileTitleInput,
   profileDescriptionInput,
-  profileEditForm,
   profileEditButton,
   addNewCardButton,
-  previewImageEl,
-  previewHeadingEl,
-  cardTitleInput,
-  cardUrlInput,
-  previewCardModal,
-  previewModalContainer,
-  profileTitle,
-  profileDescription,
-  initialCards,
-  deleteCardModal,
-  editProfileAvatarModal,
+ 
 } from "../utils/constants.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
-import Api from "../components/api.js";
+import Api from "../components/Api.js";
 import PopupDeleteConfirm from "../components/PopupDeleteConfirm.js";
 
 const api = new Api({
