@@ -7,22 +7,20 @@ class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._inputList = this._popupForm.querySelectorAll(".modal__form-input");
     this._submitButton = this._popupForm.querySelector(".modal__button");
-    
+    this._submitButtonText = this._submitButton.textContent;
   }
   close() {
     this._popupForm.reset();
     super.close();
   }
 
-
-
   setLoading(isLoading) {
     if (isLoading) {
-        this._submitButton.textContent = "Saving ...";
+      this._submitButton.textContent = "Saving ...";
     } else {
-        this._submitButton.textContent = this._submitButton;
-    }       
-}
+      this._submitButton.textContent = this._submitButtonText;
+    }
+  }
 
   _getInputValues() {
     const inputValues = {};
