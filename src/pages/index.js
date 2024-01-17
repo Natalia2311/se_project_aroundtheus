@@ -99,7 +99,6 @@ avatarPopup.setEventListeners();
 const avatarEditElement = document.forms["avatar-form"];
 const avatarFormValidator = new FormValidator(
   validationSettings,
-
   avatarEditElement
 );
 avatarFormValidator.enableValidation();
