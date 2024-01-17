@@ -194,6 +194,7 @@ const openAvatarButton = document.querySelector(".profile__icon");
 
 openAvatarButton.addEventListener("click", () => {
   avatarPopup.open();
+  avatarFormValidator.resetValidation();
 });
 
 function handleAddCardFormSubmit(inputValues) {
