@@ -21,3 +21,7 @@ Responsive layout
 
 
 
+![Screenshot 2025-02-02 125207](https://github.com/user-attachments/assets/bfc2d8bc-c59f-4564-91df-0b9b62b3ecf2)
+![Screenshot 2025-02-02 125131](https://github.com/user-attachments/assets/eb5adbb0-75a5-48fc-a509-c9772617a7b1)
+![Screenshot 2025-02-02 125041](https://github.com/user-attachments/assets/5a1f1653-0088-4de3-a2da-ddbbf8a82a67)
+![Screenshot 2025-02-02 124944](https://github.com/user-attachments/assets/69bd41d6-14e2-4d0c-8b3c-3831ef54bcd2)
